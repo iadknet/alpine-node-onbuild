@@ -3,7 +3,7 @@ Maintainer Isaac Stefanek <isaac@iadk.net>
 
 ONBUILD ENV APP_USER node_app
 ONBUILD ENV APP_ROOT /node_app
-
+ONBUILD ENV APK_PACKAGES git curl make gcc g++ python linux-headers paxctl libgcc libstdc++
 ONBUILD VOLUME /tmp
 
 ONBUILD RUN npm install -g modclean && \
@@ -15,12 +15,12 @@ ONBUILD RUN npm install -g modclean && \
 ONBUILD ADD package.json /tmp/package.json
 ONBUILD ADD npm-shrinkwrap.json /tmp/npm-shrinkwrap.json
 
-ONBUILD RUN apk add --update git curl make gcc g++ python linux-headers paxctl libgcc libstdc++ && \
+ONBUILD RUN apk add --update ${APK_PACKAGES} && \
     cd /tmp && \
     npm install && \
     modclean -r && \
     mv /tmp/node_modules ${APP_ROOT}/node_modules && \
-    apk del git curl make gcc g++ python linux-headers paxctl libgcc libstdc++ && \
+    apk del ${APK_PACKAGS} && \
     rm -rf /usr/include /etc/ssl /usr/share/man /var/cache/apk/* /root/.npm \
     /root/node-gyp /usr/lib/node_modules/npm/man usr/lib/node_modules/npm/doc \
     /usr/lib/node_modules/npm/html
