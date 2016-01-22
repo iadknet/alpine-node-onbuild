@@ -6,9 +6,11 @@ ONBUILD ENV APP_USER node_app
 ONBUILD ENV APP_ROOT /node_app
 
 # List of packages that need to be installed for node_modules to compile
-# These will be removed after npm install and not take up any space
-# in the final image.
 ONBUILD ENV APK_PACKAGES git curl make gcc g++ python linux-headers paxctl libgcc libstdc++
+
+# Packages to be removed after npm install and not take up any space
+# in the final image.
+ONBUILD ENV DEL_PACKAGES git curl make gcc g++ python linux-headers paxctl
 
 # Mount the /tmp directory on the host during build
 # so initial node_modules build does not take up space
@@ -38,7 +40,7 @@ ONBUILD RUN apk add --update ${APK_PACKAGES} && \
     npm install && \
     modclean -r && \
     mv /tmp/node_modules ${APP_ROOT}/node_modules && \
-    apk del ${APK_PACKAGES} && \
+    apk del ${DEL_PACKAGES} && \
     rm -rf /usr/include /etc/ssl /usr/share/man /var/cache/apk/* /root/.npm \
     /root/node-gyp /usr/lib/node_modules/npm/man usr/lib/node_modules/npm/doc \
     /usr/lib/node_modules/npm/html
