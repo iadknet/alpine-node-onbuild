@@ -38,7 +38,7 @@ ONBUILD RUN apk add --update ${APK_PACKAGES} && \
     npm install && \
     modclean -r && \
     mv /tmp/node_modules ${APP_ROOT}/node_modules && \
-    apk del ${APK_PACKAGS} && \
+    apk del ${APK_PACKAGES} && \
     rm -rf /usr/include /etc/ssl /usr/share/man /var/cache/apk/* /root/.npm \
     /root/node-gyp /usr/lib/node_modules/npm/man usr/lib/node_modules/npm/doc \
     /usr/lib/node_modules/npm/html
