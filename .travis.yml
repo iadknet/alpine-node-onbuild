@@ -1,13 +1,11 @@
 sudo: required
 
-language: node_js
-
 services:
   - docker
 
 before_install:
   - docker build -t alpine-node-onbuild .
   - docker build -t alpine-node-onbuild-test tests/
-  - docker run -d --rm --name alpine-node-onbuild-test alpine-node-onbuild-test
+  - docker run -d --name alpine-node-onbuild-test alpine-node-onbuild-test
   - ocker run --link alpine-node-onbuild-test:test -it --rm iadknet/alpine-curl http://test:3000/ | grep 'Hello World!' 
 
