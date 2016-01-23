@@ -11,4 +11,4 @@ before_install:
   - docker run -d --name alpine-node-onbuild-test alpine-node-onbuild-test
 
 script:
-  - docker run --link alpine-node-onbuild-test:test -it --rm iadknet/alpine-curl http://test:3000/ | grep 'Hello World!'
+  - docker run --link alpine-node-onbuild-test:test -it --rm iadknet/alpine-curl http://test:3000/ | grep 'So long and thanks for all the fish'
