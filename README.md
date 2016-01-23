@@ -1,3 +1,3 @@
-# alpine-node-onbuild ![Travis CI build status](https://travis-ci.org/iadknet/alpine-node-onbuild.svg?branch=master)
+# alpine-node-onbuild [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
 
 Outline for creating small nodejs Docker images
