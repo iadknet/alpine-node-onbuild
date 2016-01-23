@@ -7,5 +7,5 @@ before_install:
   - docker build -t alpine-node-onbuild .
   - docker build -t alpine-node-onbuild-test tests/
   - docker run -d --name alpine-node-onbuild-test alpine-node-onbuild-test
-  - docker run --link alpine-node-onbuild-test:test -it --rm iadknet/alpine-curl http://test:3000/ | grep 'Hello World!' 
-
+script:
+  - docker run --link alpine-node-onbuild-test:test -it --rm iadknet/alpine-curl http://test:3000/ | grep 'Hello World!'
