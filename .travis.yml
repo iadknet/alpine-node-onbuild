@@ -8,9 +8,9 @@ services:
   - docker
 
 before_install:
-  - docker build -t iadknet/alpine-node-onbuild .
-  - docker build -t iadknet/alpine-node-onbuild-test tests/
-  - docker run -d -p 127.0.0.1:3000:3000 iadknet/alpine-node-onbuild-tests"
+  - docker build -t alpine-node-onbuild .
+  - docker build -t alpine-node-onbuild-test tests/
+  - docker run -d -p 127.0.0.1:3000:3000 alpine-node-onbuild-test
   - docker ps -a
 
 script:

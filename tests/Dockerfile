@@ -1,2 +1,2 @@
-FROM iadknet/alpine-node-onbuild
+FROM alpine-node-onbuild
 
