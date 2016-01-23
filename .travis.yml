@@ -8,8 +8,6 @@ services:
 before_install:
   - docker build -t alpine-node-onbuild .
   - docker build -t alpine-node-onbuild-test tests/
-  - docker run -d -p 127.0.0.1:3000:3000 alpine-node-onbuild-test
-  - docker ps -a
+  - docker run -d --rm --name alpine-node-onbuild-test alpine-node-onbuild-test
+  - ocker run --link alpine-node-onbuild-test:test -it --rm iadknet/alpine-curl http://test:3000/ | grep 'Hello World!' 
 
-script:
-  - curl 127.0.0.1:3000 | grep "Hello World!"
